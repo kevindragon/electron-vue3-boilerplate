@@ -1,0 +1,23 @@
+{
+  "name": "cite-x",
+  "version": "1.0.0",
+  "description": "",
+  "main": "./dist/main.js",
+  "scripts": {
+    "build": "npm run build:front && npm run build:electron",
+    "build:electron": "tsc",
+    "build:front": "cd front && npm run build",
+    "start": "concurrently \"npm run watch:electron\" \"npm run front\"",
+    "electron": "npm run build:electron && wait-on tcp:3000 && electron .",
+    "watch:electron": "nodemon --exec npm run electron",
+    "front": "cd front && npm run dev"
+  },
+  "author": "",
+  "license": "ISC",
+  "devDependencies": {
+    "concurrently": "^8.2.0",
+    "electron": "^25.3.1",
+    "nodemon": "^3.0.1",
+    "wait-on": "^7.0.1"
+  }
+}
